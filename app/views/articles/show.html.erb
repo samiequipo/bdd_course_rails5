@@ -11,9 +11,11 @@
     <%= @article.body %>
   </div>
 
-  <div class="edit-delete">
-    <%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-warning btn-xl btn-space mt-5" %>
-    <%= link_to 'Delete Article', @article, class: "btn btn-danger btn-xl btn-space mt-5", 
-                                            method: :delete, data: {confirm: "Are you sure you want to delete article?"} %>
-  </div>
+  <% if @article.user == current_user && @article.user %>
+    <div class="edit-delete">
+      <%= link_to 'Edit Article', edit_article_path(@article), class: "btn btn-warning btn-xl btn-space mt-5" %>
+      <%= link_to 'Delete Article', @article, class: "btn btn-danger btn-xl btn-space mt-5", 
+                                              method: :delete, data: {confirm: "Are you sure you want to delete article?"} %>
+    </div>
+  <% end %>
 </article>
